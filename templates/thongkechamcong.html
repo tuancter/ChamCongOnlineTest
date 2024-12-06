@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống Kê Chấm Công</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thongkechamcong.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Thống Kê Chấm Công</h2>
+
+        <!-- Thông tin nhân viên -->
+        <div class="employee-info">
+            <h3>Thông Tin Nhân Viên</h3>
+            <p><strong>Họ Tên:</strong> Nguyễn Văn A</p>
+            <p><strong>Vị Trí:</strong> Nhân viên</p>
+            <p><strong>Số Điện Thoại:</strong> 0901234567</p>
+            <p><strong>Email:</strong> nguyenvana@gmail.com</p>
+        </div>
+        
+        <!-- Tìm kiếm theo ngày -->
+        <div class="search-container">
+            <input type="date" id="searchDate" placeholder="Tìm kiếm theo ngày">
+            <button onclick="searchAttendance()">Tìm kiếm</button>
+        </div>
+        
+        <!-- Bảng thống kê chấm công -->
+        <table id="attendanceData">
+            <thead>
+                <tr>
+                    <th>Ngày</th>
+                    <th>Trạng thái</th>
+                    <th>Giờ Đi Làm</th>
+                    <th>Giờ Tan Ca</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="row-1">
+                    <td>01/12/2024</td>
+                    <td class="status">Đi làm</td>
+                    <td class="start-time">8:00 AM</td>
+                    <td class="end-time">5:00 PM</td>
+                    <td><button onclick="editAttendance(1)">Chỉnh sửa</button></td>
+                </tr>
+                <tr id="row-2">
+                    <td>02/12/2024</td>
+                    <td class="status">Đi muộn</td>
+                    <td class="start-time">9:00 AM</td>
+                    <td class="end-time">5:30 PM</td>
+                    <td><button onclick="editAttendance(2)">Chỉnh sửa</button></td>
+                </tr>
+                <tr id="row-3">
+                    <td>03/12/2024</td>
+                    <td class="status">Không đi làm</td>
+                    <td class="start-time">-</td>
+                    <td class="end-time">-</td>
+                    <td><button onclick="editAttendance(3)">Chỉnh sửa</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Modal chỉnh sửa -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <h2>Chỉnh sửa thông tin chấm công</h2>
+                <label for="status">Trạng Thái:</label>
+                <select id="status" name="status">
+                    <option value="Đi làm">Đi làm</option>
+                    <option value="Đi muộn">Đi muộn</option>
+                    <option value="Không đi làm">Không đi làm</option>
+                </select><br><br>
+
+                <label for="start-time">Giờ Đi Làm:</label>
+                <input type="time" id="start-time" name="start-time"><br><br>
+
+                <label for="end-time">Giờ Tan Ca:</label>
+                <input type="time" id="end-time" name="end-time"><br><br>
+
+                <button onclick="saveChanges()">Lưu Thay Đổi</button>
+                <button onclick="closeModal()">Hủy</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/thongkechamcong.js') }}"></script>
+</body>
+</html>

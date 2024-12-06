@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê Lương</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/thongkeluong.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thống Kê Lương Nhân Viên</h1>
+        </div>
+
+        <!-- Phần tìm kiếm -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên nhân viên...">
+            <button onclick="searchEmployee()">Tìm kiếm</button>
+        </div>
+
+        <!-- Bảng thống kê -->
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>Tên Nhân Viên</th>
+                    <th>Số Ngày Đi Làm</th>
+                    <th>Số Ngày Đi Muộn</th>
+                    <th>Tổng Lương</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="employeeData">
+                <!-- Dữ liệu nhân viên sẽ hiển thị ở đây -->
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>22</td>
+                    <td>2</td>
+                    <td>8,000,000 VND</td>
+                    <td>0901234567</td>
+                    <td>a.nguyen@example.com</td>
+                </tr>
+                <tr>
+                    <td>Trần Thị B</td>
+                    <td>20</td>
+                    <td>1</td>
+                    <td>7,500,000 VND</td>
+                    <td>0912345678</td>
+                    <td>b.tran@example.com</td>
+                </tr>
+                <!-- Các hàng nhân viên khác sẽ được thêm vào từ cơ sở dữ liệu -->
+            </tbody>
+        </table>
+    </div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <h2>Chỉnh sửa thông tin chấm công</h2>
+        <label for="status">Trạng Thái:</label>
+        <select id="status" name="status">
+            <option value="Đi làm">Đi làm</option>
+            <option value="Đi muộn">Đi muộn</option>
+            <option value="Không đi làm">Không đi làm</option>
+        </select><br><br>
+
+        <label for="start-time">Giờ Đi Làm:</label>
+        <input type="time" id="start-time" name="start-time"><br><br>
+
+        <label for="end-time">Giờ Tan Ca:</label>
+        <input type="time" id="end-time" name="end-time"><br><br>
+
+        <button onclick="saveChanges()">Lưu Thay Đổi</button>
+        <button onclick="closeModal()">Hủy</button>
+    </div>
+</div>
+
+
+    <script src="{{ url_for('static', filename='js/thongkeluong.js') }}"></script>
+</body>
+</html>

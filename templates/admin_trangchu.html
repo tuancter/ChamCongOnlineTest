@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_trangchu.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Xem thống kê chấm công</a></li>
+            <li><a href="#">Thống kê lương</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Danh sách nhân viên</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Địa chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Vị trí</th>
+                            <th>Lương cơ bản</th>
+                            <th>Trạng thái chấm công</th>
+                            <th>Giờ đi làm</th>
+                            <th>Giờ tan ca</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu nhân viên -->
+                        <tr>
+                            <td id="emp-name">Nguyễn Văn A</td>
+                            <td id="emp-dob">01/01/1990</td>
+                            <td id="emp-address">Hà Nội</td>
+                            <td id="emp-phone">0123456789</td>
+                            <td id="emp-position">Nhân viên</td>
+                            <td id="emp-salary">7,000,000 VND</td>
+                            <td id="emp-status">Đang làm việc</td>
+                            <td id="emp-time-in">08:00 AM</td>
+                            <td id="emp-time-out">05:00 PM</td>
+                            <td>
+                                <button class="button" onclick="openEditModal()">Sửa</button>
+                                <button class="button">Xóa</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="edit-modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">Chỉnh sửa thông tin nhân viên</div>
+            <div class="modal-body">
+                <label for="emp-name-input">Họ tên:</label>
+                <input type="text" id="emp-name-input" value="Nguyễn Văn A">
+                <br><br>
+                <label for="emp-dob-input">Ngày sinh:</label>
+                <input type="date" id="emp-dob-input" value="1990-01-01">
+                <br><br>
+                <label for="emp-address-input">Địa chỉ:</label>
+                <input type="text" id="emp-address-input" value="Hà Nội">
+                <br><br>
+                <label for="emp-phone-input">Số điện thoại:</label>
+                <input type="text" id="emp-phone-input" value="0123456789">
+                <br><br>
+                <label for="emp-position-input">Vị trí:</label>
+                <input type="text" id="emp-position-input" value="Nhân viên">
+                <br><br>
+                <label for="emp-salary-input">Lương cơ bản:</label>
+                <input type="text" id="emp-salary-input" value="7,000,000 VND">
+                <br><br>
+                <label for="emp-status-input">Trạng thái:</label>
+                <select id="emp-status-input">
+                    <option value="working" selected>Đang làm việc</option>
+                    <option value="leaving">Tan ca</option>
+                    <option value="not_punched">Chưa chấm công</option>
+                </select>
+                <br><br>
+                <label for="emp-time-in-input">Giờ đi làm:</label>
+                <input type="time" id="emp-time-in-input" value="08:00">
+                <br><br>
+                <label for="emp-time-out-input">Giờ tan ca:</label>
+                <input type="time" id="emp-time-out-input" value="17:00">
+            </div>
+            <div class="modal-footer">
+                <button onclick="saveChanges()">Lưu</button>
+                <button onclick="closeModal()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin_trangchu.js') }}"></script>
+</body>
+</html>
